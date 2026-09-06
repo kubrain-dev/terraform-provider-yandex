@@ -1,0 +1,17 @@
+# Local development override for the Kubrain "yandex" provider.
+#
+# Copy this to ~/.terraformrc (or point $TF_CLI_CONFIG_FILE at it), then
+# `go build -o terraform-provider-yandex .` in this directory. Terraform will
+# use the freshly built binary for source "kubrain.dev/kubrain/yandex" and skip
+# `terraform init` provider installation.
+#
+# Replace the path below with the absolute path to this directory.
+
+provider_installation {
+  dev_overrides {
+    "kubrain.dev/kubrain/yandex" = "/home/sasha/kubrain/terraform-provider-yandex"
+  }
+
+  # For everything else, use the normal registry.
+  direct {}
+}

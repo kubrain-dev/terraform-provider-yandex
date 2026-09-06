@@ -1,0 +1,12 @@
+# Built provider binary
+/terraform-provider-yandex
+terraform-provider-yandex_v*
+
+# Terraform working files
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/*.tfstate
+**/*.tfstate.backup
+crash.log
