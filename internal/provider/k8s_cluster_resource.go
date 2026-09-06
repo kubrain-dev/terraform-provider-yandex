@@ -116,8 +116,12 @@ func (r *k8sClusterResource) Schema(_ context.Context, _ resource.SchemaRequest,
 				Description: "Master (control plane) spec. `version` maps to the Kubernetes version; a `regional` " +
 					"block selects HA (3 control planes), otherwise a single control plane (`normal`).",
 				Attributes: map[string]schema.Attribute{
-					"version":                schema.StringAttribute{Optional: true, Description: "Kubernetes version."},
-					"public_ip":              schema.BoolAttribute{Optional: true, Description: "Ignored (Kubrain always exposes a public endpoint)."},
+					// Optional+Computed: the provider fills these from the live
+					// cluster after apply (version normalization, public_ip default),
+					// which a plain Optional attribute would reject as an
+					// inconsistent result.
+					"version":                schema.StringAttribute{Optional: true, Computed: true, Description: "Kubernetes version."},
+					"public_ip":              schema.BoolAttribute{Optional: true, Computed: true, Description: "Ignored (Kubrain always exposes a public endpoint)."},
 					"external_v4_endpoint":   schema.StringAttribute{Computed: true, Description: "Public API endpoint."},
 					"cluster_ca_certificate": schema.StringAttribute{Computed: true, Description: "Not exposed by Kubrain; always empty."},
 				},

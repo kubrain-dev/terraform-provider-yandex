@@ -42,11 +42,12 @@ type storageBucketModel struct {
 	BucketDomainName types.String `tfsdk:"bucket_domain_name"`
 
 	// accepted & ignored (YC compatibility):
-	AccessKey types.String `tfsdk:"access_key"`
-	SecretKey types.String `tfsdk:"secret_key"`
-	FolderID  types.String `tfsdk:"folder_id"`
-	MaxSize   types.Int64  `tfsdk:"max_size"`
-	Tags      types.Map    `tfsdk:"tags"`
+	AccessKey  types.String `tfsdk:"access_key"`
+	SecretKey  types.String `tfsdk:"secret_key"`
+	FolderID   types.String `tfsdk:"folder_id"`
+	MaxSize    types.Int64  `tfsdk:"max_size"`
+	Tags       types.Map    `tfsdk:"tags"`
+	Versioning types.List   `tfsdk:"versioning"`
 }
 
 func (r *storageBucketResource) Metadata(_ context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
